@@ -1,55 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[orchard] gallery</title>
-    <link rel="icon" type="image/png" href="./static/icon.avif">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Dokdo&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    
-    <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./pictures.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[orchard] gallery</title>
+  <link rel="icon" type="image/png" href="./static/icon.avif">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Dokdo&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+
+  <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./pictures.css">
 </head>
 
 <body>
-    <header>
-        <img src="./static/banner_no_bg.png" id="banner" style="margin-bottom: 20px;" />
-        <nav>
-          (<a href="./index.html">home</a>)
-          &nbsp;&nbsp;
-          (<a href="./about.html">about</a>)
-          &nbsp;&nbsp;
-          (<a href="./photos.html">photos</a>)
-          &nbsp;&nbsp;
-          (<a href="./logs.html">logs</a>)
-        </nav>
-      </header>
+  <header>
+    <img src="./static/banner_no_bg.png" id="banner" style="margin-bottom: 20px;" />
+    <nav>
+      (<a href="./index.html">home</a>)
+      &nbsp;&nbsp;
+      (<a href="./about.html">about</a>)
+      &nbsp;&nbsp;
+      (<a href="./photos.html">photos</a>)
+      &nbsp;&nbsp;
+      (<a href="./logs.html">logs</a>)
+    </nav>
+  </header>
 
-    <article>
+  <article>
 
-        <h1 id="orchard-title">`gallery`</h1>
-        
-        <div class="navigation">
-            <button id="prev-day" class="nav-button">← before</button>
-            <button id="toggle" class="nav-button" style="width: 65px;">sunrise</button>
-            <button id="next-day" class="nav-button">after →</button>
-        </div>
-        <br>
-        <span id="date" class="date" style="display: block; text-align: center;"></span>
-        
+    <h1 id="orchard-title">`gallery`</h1>
 
-        <div id="gallery" class="gallery"></div>
-        <script src="images.js"></script>
-        <script src="script.js"></script>
+    <div class="navigation">
+      <button id="prev-day" class="nav-button">← before</button>
+      <button id="toggle" class="nav-button" style="width: 65px;">sunrise</button>
+      <button id="next-day" class="nav-button">after →</button>
+    </div>
+    <br>
+    <span id="date" class="date" style="display: block; text-align: center;"></span>
 
-        <p>
-            <a href="./index.html">back to home</a>
-          </p>
-          <br>
-    </article>
+
+    <div id="gallery" class="gallery"></div>
+    <script src="images.js"></script>
+    <script src="script.js"></script>
+
+    <p>
+      <a href="./index.html">back to home</a>
+    </p>
+    <br>
+  </article>
+  <div id="cursor-chat-layer">
+    <input type="text" id="cursor-chat-box">
+  </div>
+  <script type="module">
+    import { initCursorChat } from 'https://esm.sh/cursor-chat'
+    initCursorChat("orchard-room")
+  </script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/cursor-chat/dist/style.css" />
 </body>
+
 </html>

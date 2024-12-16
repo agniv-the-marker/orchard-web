@@ -5,11 +5,13 @@
   <title>[orchard] logs</title>
   <link rel="icon" type="image/png" href="./static/icon.avif">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Dokdo&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Dokdo&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
 
-<link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'>
 
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -30,14 +32,18 @@
 
   <article>
     <h1>`logs`</h1>
-    <p>here, we plan to document some of the philosophy, culture, and projects that have come out of <span class="orchard">[orchard]</span>.</p>
+    <p>here, we plan to document some of the philosophy, culture, and projects that have come out of <span
+        class="orchard">[orchard]</span>.</p>
 
     <div style="text-align: center;"></div>
-      <video src="https://images-ext-1.discordapp.net/external/7QEGm9WZXCbHg1xX0eP_pXOWUDlNwNxOs5-tsbQZWAM/https/media.tenor.com/8tbLhifgyEEAAAPo/excited.mp4" autoplay loop muted style="max-width: 100%; height: auto;"></video>
+    <video
+      src="https://images-ext-1.discordapp.net/external/7QEGm9WZXCbHg1xX0eP_pXOWUDlNwNxOs5-tsbQZWAM/https/media.tenor.com/8tbLhifgyEEAAAPo/excited.mp4"
+      autoplay loop muted style="max-width: 100%; height: auto;"></video>
     </div>
 
     <p>
-      we hope that these logs can serve as a record of the community and the work that we do, and invite musings to be added here over time.
+      we hope that these logs can serve as a record of the community and the work that we do, and invite musings to be
+      added here over time.
     </p>
 
     <!--
@@ -60,5 +66,14 @@
     </p>
   </article>
 
+  <div id="cursor-chat-layer">
+    <input type="text" id="cursor-chat-box">
+  </div>
+  <script type="module">
+    import { initCursorChat } from 'https://esm.sh/cursor-chat'
+    initCursorChat("orchard-room")
+  </script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/cursor-chat/dist/style.css" />
+</body>
 
-  </body>
+</html>

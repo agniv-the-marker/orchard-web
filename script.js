@@ -21,9 +21,9 @@ function formatDate(dateStr) {
 function applyRandomStyles(element) {
     const rot = 20;
     const offset = 15;
-    const rotation = `${Math.random() * rot - rot/2}deg`;
-    const offsetX = `${Math.random() * offset - offset/2}px`;
-    const offsetY = `${Math.random() * offset - offset/2}px`;
+    const rotation = `${Math.random() * rot - rot / 2}deg`;
+    const offsetX = `${Math.random() * offset - offset / 2}px`;
+    const offsetY = `${Math.random() * offset - offset / 2}px`;
 
     element.style.setProperty('--rotation', rotation);
     element.style.setProperty('--offsetX', offsetX);
@@ -55,19 +55,19 @@ function renderGallery(imagesByDate, isDayMode) {
     const currentIndex = isDayMode ? currentDayIndex : currentNightIndex;
     const date = isDayMode ? dayDates[currentIndex] : nightDates[currentIndex];
     let images = imagesByDate[date];
-    
+
     // Shuffle the images slightly
     images = shuffleImages(images);
 
     gallery.innerHTML = ''; // Clear gallery
-    
+
     images.forEach((src) => {
         const img = document.createElement('img');
         img.src = src
         img.loading = 'lazy';  // Add this line for lazy loading
         applyRandomStyles(img);
         addRandomHeight(img);  // Apply random height to some images
-        
+
         // Detect image aspect ratio and apply class
         img.onload = () => {
             if (img.naturalWidth > img.naturalHeight) {
@@ -130,14 +130,14 @@ function openFullScreen(image) {
     // Set up the fullscreen image
     const fullscreenImage = document.getElementById('fullscreen-image');
     fullscreenImage.src = image.src;
-    
+
     // Add appropriate class based on image orientation
     if (image.classList.contains('vertical')) {
         fullscreenImage.classList.add('vertical-fullscreen');
     } else if (image.classList.contains('horizontal')) {
         fullscreenImage.classList.add('horizontal-fullscreen');
     }
-    
+
     fullscreenModal.classList.add('active');
 }
 
@@ -154,17 +154,17 @@ function navigateFullscreen(direction) {
 
     const fullscreenImage = document.getElementById('fullscreen-image');
     const nextImage = currentFullscreenImages[currentFullscreenImageIndex];
-    
+
     // Reset previous classes
     fullscreenImage.classList.remove('vertical-fullscreen', 'horizontal-fullscreen');
-    
+
     // Add appropriate class based on image orientation
     if (nextImage.classList.contains('vertical')) {
         fullscreenImage.classList.add('vertical-fullscreen');
     } else if (nextImage.classList.contains('horizontal')) {
         fullscreenImage.classList.add('horizontal-fullscreen');
     }
-    
+
     fullscreenImage.src = nextImage.src;
 }
 
@@ -215,7 +215,7 @@ function adjustNavigationPosition() {
     const navigation = document.querySelector('.navigation');
     const windowHeight = window.innerHeight;
     const navigationHeight = navigation.offsetHeight;
-    
+
     // Position navigation relative to viewport
     navigation.style.position = 'sticky';
     navigation.style.top = '20px';  // Small offset from the top
