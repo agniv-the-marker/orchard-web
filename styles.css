@@ -10,12 +10,18 @@
   --mono-font: "Rubik", monospace;
 }
 
+s h1,
+nav a,
+html,
+body {
+    color: inherit;
+}
+
 h1,
 h2,
 h3 {
   text-align: center;
   font-family: var(--secondary-font);
-  color: var(--white);
   margin-top: 4rem;
 }
 
@@ -40,7 +46,6 @@ nav {
 }
 
 nav a {
-  color: var(--white);
   text-decoration: underline;
 }
 
@@ -138,11 +143,4 @@ img,
 iframe {
   max-width: 100%;
   border-radius: 5px;
-}
-
-/* Make margin smaller */
-@media (max-width: 600px) {
-  article {
-    margin: 4vh auto;
-  }
 }

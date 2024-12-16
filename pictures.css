@@ -9,13 +9,6 @@
     color: #fff;
 }
 
-s h1,
-nav a,
-html,
-body {
-    color: inherit;
-}
-
 /* Toggle button styles based on day/night mode */
 .light-mode #toggle {
     background-color: #333;
