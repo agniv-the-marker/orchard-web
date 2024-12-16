@@ -1,7 +1,8 @@
 :root {
-  --gray: "#6C6C6C";
+  --gray: #6C6C6C;
   --white: rgb(250, 250, 250);
-  --brown: "#f5deb3";
+  --orange: #f08f27;
+  --brown: #f5deb3;
   --black: rgb(16, 16, 16);
 
   --primary-font: "Cormorant Garamond", sans-serif;
@@ -41,6 +42,11 @@ nav a {
   text-decoration: underline;
 }
 
+a {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
 html, body {
   color: var(--white);
   margin: 0;
@@ -51,6 +57,11 @@ html, body {
 
 #photo {
   margin: 1rem 0;
+}
+
+.orchard {
+  color: var(--orange);
+  font-weight: bolder;
 }
 
 .doodle-container {

@@ -50,12 +50,20 @@ h1, nav a, html, body {
     color: #333;               /* Dark text during the night */
 }
 
+.dark-mode #orchard-title {
+    color: #fff;
+}
+
+.light-mode #orchard-title {
+    color: #000;
+}
+
 .nav-button {
-    padding: 5px 10px;
+    padding: 5px 15px;
     cursor: pointer;
     font-family: "Cormorant Garamond", sans-serif;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -110,26 +118,6 @@ h1, nav a, html, body {
     height: calc(100px + (200 * Math.random()))px; /* Random height between 100px and 300px */
 }
 
-.instagram-link {
-    margin-left: 10px;
-    color: inherit;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.light-mode .instagram-link i,
-.dark-mode .instagram-link i {
-    color: #000;  /* Black icon in light mode */
-}
-
-.dark-mode .instagram-link i {
-    color: #fff;  /* White icon in dark mode */
-}
-
-.instagram-link:hover i {
-    color: #E1306C;  /* Instagram brand color when hovered */
-    transition: color 0.3s ease 0.1s;  /* Delay transition on hover */
-}
 
 #fullscreen-modal {
     display: none;

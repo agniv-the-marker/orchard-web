@@ -181,11 +181,11 @@ function updateMode() {
     if (isDay) {
         document.body.className = 'light-mode';
         renderGallery(dayImagesByDate, true);  // Render day images
-        toggleButton.textContent = 'sunset ?';
+        toggleButton.textContent = 'sunset';
     } else {
         document.body.className = 'dark-mode';
         renderGallery(nightImagesByDate, false);  // Render night images
-        toggleButton.textContent = 'sunrise?';
+        toggleButton.textContent = 'sunrise';
     }
 }
 
