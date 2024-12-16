@@ -22,20 +22,20 @@ h3 {
 article {
   text-align: justify;
   font-family: var(--primary-font);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin: 10vh auto;
-  width: max(90%, 600px);
+  width: min(90%, 600px);
 }
 
 header {
-  width: max(90%, 600px);
+  width: min(90%, 600px);
   margin: 0 auto;
 }
 
 nav {
   text-align: center;
   font-family: var(--secondary-font);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-bottom: -3.5rem;
 }
 
@@ -138,4 +138,11 @@ img,
 iframe {
   max-width: 100%;
   border-radius: 5px;
+}
+
+/* Make margin smaller */
+@media (max-width: 600px) {
+  article {
+    margin: 4vh auto;
+  }
 }

@@ -23,7 +23,7 @@ Roughly, to make a new page, just do an html file and go:
   <header>
     <img src="./static/banner_no_bg.png" id="banner" style="margin-bottom: 20px;" />
     <nav>
-      (<a href="./index.html">home</a>)
+      (<a href="https://orchard.day">home</a>)
       &nbsp;&nbsp;
       (<a href="./about.html">about</a>)
       &nbsp;&nbsp;
