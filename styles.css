@@ -24,11 +24,11 @@ article {
   font-family: var(--primary-font);
   font-size: 1.2rem;
   margin: 10vh auto;
-  width: min(90%, 600px);
+  width: max(90%, 600px);
 }
 
 header {
-  width: min(90%, 600px);
+  width: max(90%, 600px);
   margin: 0 auto;
 }
 
