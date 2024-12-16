@@ -144,3 +144,14 @@ iframe {
   max-width: 100%;
   border-radius: 5px;
 }
+
+@media (max-width: 600px) {
+  article {
+    margin: 5vh 2%;
+  }
+
+  header {
+    width: 100%;
+    margin: 0;
+  }
+}
