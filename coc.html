@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>[orchard]</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" type="image/png" href="./static/icon.avif">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Dokdo&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+
+  <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'>
+
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <header>
+    <img src="./static/banner_no_bg.png" id="banner" style="margin-bottom: 20px;" />
+    <nav>
+      (<a href="https://orchard.day">home</a>)
+      &nbsp;&nbsp;
+      (<a href="./about.html">about</a>)
+      &nbsp;&nbsp;
+      (<a href="./photos.html">photos</a>)
+      &nbsp;&nbsp;
+      (<a href="./logs.html">logs</a>)
+    </nav>
+  </header>
+  <!--<div class="doodle-container">
+    <div id="doodles">
+      <img src="./static/doodles/cat.png" id="longcat" />
+      <img src="./static/doodles/sparkle.png" id="sparkle" />
+      <img src="./static/doodles/john.png" id="john" />
+      <img src="./static/doodles/swag.png" id="swag" />
+      <img src="./static/doodles/star.png" id="star" />
+      <img src="./static/doodles/sun.png" id="sun" />
+      <img src="./static/doodles/plant.png" id="plant" />
+    </div>
+  </div>-->
+  <article>
+    <h1>`code of conduct`</h1>
+
+    <p>At [orchard] events we are dedicated to providing a welcoming and safe experience for all. We ask that you hold respect for the space and the people within it.</p>
+
+    <p>Hosts may ask anyone violating the code of conduct to leave the session and/or discord server. If you’ve violated the code of conduct and been asked to leave, you must obtain written approval (ox.orchard@gmail.com) from [orchard]’s host team prior to joining us for any future sessions or [orchard] events. Failure to obtain approval is a violation of the code of conduct.</p>
+
+    <h2>Respecting each other</h2>
+    <ul></ul>
+      <li>‘Host mindset’: if you see someone alone, go talk to them! Often, this looks like someone who is physically in a group but is not really engaging in a conversation. Try to ask questions and include them!</li>
+      <li>Be thoughtful in how you communicate. People at our sessions come from all different backgrounds and are looking to learn -- be ready to explain concepts and terms at varying levels of complexity and avoid exclusive jargon. </li>
+      <li>Don’t interrupt people when they’re speaking. Ask positive or constructive questions during demos. </li>
+    </ul>
+    
+    <h2>Respecting the space</h2>
+    <ul>
+      <li>Clean up after yourself</li>
+      <li>Follow the venue-specific rules that are set out at the beginning of each session (particularly in the art room)</li>
+    </ul>
+
+    <h2>Harassment</h2>
+    <p>Harassment of any kind is not tolerated. Harassment includes but is not limited to:</p>
+    <ul>
+      <li>Verbal comments reinforcing social dominance based on gender, identity, orientation, disability, appearance, body size, race, age, or religion.</li>
+      <li>Deliberate intimidation, stalking, or following.</li>
+      <li>Harassing photography or recording.</li>
+      <li>Sustained disruption of talks or other events.</li>
+      <li>Inappropriate physical contact.</li>
+      <li>Unwelcome sexual attention.</li>
+      <li>Advocating for, or encouraging, any of the above behaviour.</li>
+    </ul>
+
+    <h2>Reporting</h2>
+    <p>If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible (ox.orchard@gmail.com or speak to a host in person). We take all reports very seriously. </p>
+
+  </article>
+
+  <div id="cursor-chat-layer">
+    <input type="text" id="cursor-chat-box">
+  </div>
+  <script type="module">
+    import { initCursorChat } from 'https://esm.sh/cursor-chat'
+    initCursorChat("orchard-room")
+  </script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/cursor-chat/dist/style.css" />
+</body>
+
+</html>
