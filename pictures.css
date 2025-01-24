@@ -31,10 +31,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 600px; /* Match the content width */
+    max-width: 600px;
 }
 
 /* Remove the padding we added earlier */
@@ -86,6 +83,8 @@
     border: none;
     border-radius: 20px;
     transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap; /* Prevent text wrapping */
+    min-width: 65px; /* Ensure minimum width */
 }
 
 .gallery {
@@ -263,7 +262,20 @@
       width: 100%;
       margin: 0;
     }
-  }
+    
+    .navigation {
+        gap: 8px; /* Slightly reduce gap on mobile */
+        width: auto; /* Remove full width constraint */
+        transform: none; /* Remove transform */
+        left: auto; /* Remove positioning */
+        position: static;
+    }
+    
+    .nav-button {
+        padding: 5px 10px; /* Slightly reduce padding */
+        font-size: 0.9em; /* Slightly reduce font size */
+    }
+}
 
 /* Optional: If you want it truly edge-to-edge */
 body {
