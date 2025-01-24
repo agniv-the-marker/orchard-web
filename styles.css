@@ -33,20 +33,53 @@ article {
   width: min(90%, 600px);
 }
 
+/* Override article styles for gallery page */
+article:has(.gallery) {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+}
+
 header {
-  width: min(90%, 600px);
-  margin: 0 auto;
+    width: min(90%, 600px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Keep the header centered but allow it to be wider on gallery page */
+header:has(+ article .gallery) {
+    width: min(90%, 1200px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* The banner should stay the same size even on gallery pages */
+#banner {
+    height: 600px;
+    height: auto;
+    display: block;
 }
 
 nav {
-  text-align: center;
-  font-family: var(--secondary-font);
-  font-size: 1.4rem;
-  margin-bottom: -3.5rem;
+    text-align: center;
+    font-family: var(--secondary-font);
+    font-size: 1.4rem;
+    margin-bottom: -3.5rem;
+    width: 100%;
+    display: block;
+}
+
+/* Add specific nav spacing for gallery page */
+header:has(+ article .gallery) nav {
+    margin-bottom: -2rem; /* Less negative margin for gallery page */
 }
 
 nav a {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 a {

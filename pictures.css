@@ -29,6 +29,18 @@
     gap: 10px;
     justify-content: center;
     width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 600px; /* Match the content width */
+}
+
+/* Remove the padding we added earlier */
+.navigation {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .light-mode #prev-day {
@@ -80,60 +92,60 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    margin-top: 40px;
-    /* Increased space for the header */
-    margin-bottom: 90px;
-    /* Increased space for the footer */
-    margin-left: 5%;
-    margin-right: 5%;
-    align-items: center;
-    /* Ensure that all images are aligned to the center */
+    gap: 60px;
+    padding: 40px;
+    width: 90%;
+    max-width: 2000px;
+    margin: 40px auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .gallery img {
-    flex-grow: 1;
+    flex-grow: 0;
     object-fit: cover;
-    height: 200px;
-    margin-left: -40px;
-    margin-right: -40px;
-    border: 3px solid #fff;
-    border-radius: 5px;
+    height: 240px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 3px;
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, opacity 0.3s;
     transform-origin: center;
-    transform: scale(0.9) rotate(var(--rotation));
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
-    display: flex;
+    transform: rotate(var(--rotation)) translate(var(--offsetX), var(--offsetY));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    will-change: transform;
+    opacity: 0;
+}
+
+.dark-mode .gallery img {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.gallery img.loaded {
+    opacity: 1; /* Fade in when loaded class is added */
 }
 
 .gallery img.horizontal {
-    margin-top: -10px;
-    margin-bottom: -10px;
+    margin-top: -8px;
+    margin-bottom: -8px;
     width: auto;
-    height: 200px;
-    /* You can adjust this based on your preference */
+    height: 220px;
 }
 
 .gallery img.vertical {
-    margin-top: -100px;
-    margin-bottom: -60px;
+    margin-top: -30px;
+    margin-bottom: -20px;
     height: auto;
-    width: 150px;
-    /* You can adjust this based on your preference */
+    width: 170px;
 }
 
 .gallery img.random-height {
     grid-row: span 2;
     grid-column: span 2;
-    max-height: 220px;
-    /* Adjust as needed */
+    max-height: 250px;
     justify-self: center;
-    height: calc(100px + (200 * Math.random()))px;
-    /* Random height between 100px and 300px */
 }
-
 
 #fullscreen-modal {
     display: none;
@@ -236,6 +248,12 @@
     height: auto;
 }
 
+#banner {
+    width: min(600px, 90%);
+    height: auto;
+    display: block;
+}
+
 @media (max-width: 600px) {
     article {
       margin: 5vh 2%;
@@ -246,3 +264,33 @@
       margin: 0;
     }
   }
+
+/* Optional: If you want it truly edge-to-edge */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Remove the article constraints */
+article {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Add some padding to the header and navigation instead */
+header, 
+.navigation,
+#orchard-title,
+#date {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Keep the back to home link padded */
+article > p {
+    padding: 0 20px;
+}

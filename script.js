@@ -10,6 +10,24 @@ let isDay = true;
 let currentDayIndex = 0;
 let currentNightIndex = 0;
 
+// Replace the existing arrays with a larger set of varied values
+const rotations = [4, -5, 2, -4, 6, -2, -5, 3, 1, -6, -3, -1, 4, 2, 3, -4, 2, 3, 5, -2, 
+                  -3, 4, 1, -5, 4, -1, 6, -3, -2, -6, 5, -2];
+const offsetsX = [8, -10, 4, -6, 12, -8, 6, -4, 10, -12, 5, -7, 9, -5, 7, -9, 11, -8, 
+                 6, -11, 8, -5, 12, -7, 5, -10, 7, -6, 9, -8, 4, -12];
+const offsetsY = [6, -8, 10, -4, 8, -12, 4, -6, 12, -5, 7, -9, 5, -7, 9, -11, 6, -10, 
+                 8, -5, 11, -7, 5, -9, 7, -4, 10, -8, 6, -11, 8, -6];
+
+// Precomputed styles for better performance
+const STYLE_COUNT = 32;
+const precomputedStyles = Array.from({ length: STYLE_COUNT }, (_, i) => ({
+    rotation: `${rotations[i % rotations.length]}deg`,
+    offsetX: `${offsetsX[i % offsetsX.length]}px`,
+    offsetY: `${offsetsY[i % offsetsY.length]}px`
+}));
+
+let styleIndex = 0;
+
 // Function to format the date
 function formatDate(dateStr) {
     const date = new Date(dateStr);
@@ -19,15 +37,16 @@ function formatDate(dateStr) {
 
 // Function to generate random offset and rotation
 function applyRandomStyles(element) {
-    const rot = 20;
-    const offset = 15;
-    const rotation = `${Math.random() * rot - rot / 2}deg`;
-    const offsetX = `${Math.random() * offset - offset / 2}px`;
-    const offsetY = `${Math.random() * offset - offset / 2}px`;
+    const rotation = `${rotations[styleIndex % rotations.length]}deg`;
+    const offsetX = `${offsetsX[styleIndex % offsetsX.length]}px`;
+    const offsetY = `${offsetsY[styleIndex % offsetsY.length]}px`;
 
     element.style.setProperty('--rotation', rotation);
     element.style.setProperty('--offsetX', offsetX);
     element.style.setProperty('--offsetY', offsetY);
+
+    // Increment the index for the next image
+    styleIndex = (styleIndex + 1) % rotations.length;
 }
 
 // Function to add random heights to images
@@ -50,39 +69,85 @@ function shuffleImages(images) {
     return images;
 }
 
-// Function to render images for a specific day or night date
+// Optimized render function
 function renderGallery(imagesByDate, isDayMode) {
     const currentIndex = isDayMode ? currentDayIndex : currentNightIndex;
     const date = isDayMode ? dayDates[currentIndex] : nightDates[currentIndex];
-    let images = imagesByDate[date];
+    const images = imagesByDate[date];
+    
+    // Clear gallery efficiently
+    while (gallery.firstChild) {
+        gallery.removeChild(gallery.firstChild);
+    }
 
-    // Shuffle the images slightly
-    images = shuffleImages(images);
-
-    gallery.innerHTML = ''; // Clear gallery
-
-    images.forEach((src) => {
-        const img = document.createElement('img');
-        img.src = src
-        img.loading = 'lazy';  // Add this line for lazy loading
-        applyRandomStyles(img);
-        addRandomHeight(img);  // Apply random height to some images
-
-        // Detect image aspect ratio and apply class
-        img.onload = () => {
-            if (img.naturalWidth > img.naturalHeight) {
-                img.classList.add('horizontal');
-            } else {
-                img.classList.add('vertical');
-            }
-        };
-
-        img.addEventListener('click', () => openFullScreen(img)); // Add click event for full screen
-        gallery.appendChild(img);
+    // Create document fragment for batch DOM updates
+    const fragment = document.createDocumentFragment();
+    
+    // Create and prepare all images
+    const imageElements = images.map((src, index) => {
+        const img = new Image();
+        
+        // Don't set src immediately
+        img.loading = 'lazy';
+        
+        // Apply precomputed styles
+        const style = precomputedStyles[(styleIndex + index) % STYLE_COUNT];
+        img.style.setProperty('--rotation', style.rotation);
+        img.style.setProperty('--offsetX', style.offsetX);
+        img.style.setProperty('--offsetY', style.offsetY);
+        
+        // Add click handler
+        img.addEventListener('click', () => openFullScreen(img));
+        
+        // Set src after setting up the loading state
+        img.src = src;
+        
+        return img;
     });
 
-    // Update the date text next to the title
+    // Update styleIndex for next render
+    styleIndex = (styleIndex + images.length) % STYLE_COUNT;
+
+    // Batch append all images
+    imageElements.forEach(img => fragment.appendChild(img));
+    gallery.appendChild(fragment);
+
+    // Update date text
     dateElement.textContent = `(${formatDate(date)})`;
+
+    // Handle image loading and classification
+    const handleImageLoad = (img) => {
+        if (img.naturalWidth > img.naturalHeight) {
+            img.classList.add('horizontal');
+        } else {
+            img.classList.add('vertical');
+        }
+        if (Math.random() > 0.5) {
+            img.classList.add('random-height');
+        }
+        // Add loaded class to trigger fade in
+        requestAnimationFrame(() => {
+            img.classList.add('loaded');
+        });
+    };
+
+    // Set up intersection observer for lazy loading
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.complete) {
+                    handleImageLoad(img);
+                } else {
+                    img.onload = () => handleImageLoad(img);
+                }
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    // Observe all images
+    imageElements.forEach(img => observer.observe(img));
 }
 
 // Add this to the top of your existing script.js, near other variable declarations
@@ -176,17 +241,11 @@ function closeFullScreen() {
     }
 }
 
-// Function to update the mode (modify existing function)
+// Simplified update mode function
 function updateMode() {
-    if (isDay) {
-        document.body.className = 'light-mode';
-        renderGallery(dayImagesByDate, true);  // Render day images
-        toggleButton.textContent = 'sunset';
-    } else {
-        document.body.className = 'dark-mode';
-        renderGallery(nightImagesByDate, false);  // Render night images
-        toggleButton.textContent = 'sunrise';
-    }
+    document.body.className = isDay ? 'light-mode' : 'dark-mode';
+    toggleButton.textContent = isDay ? 'sunset' : 'sunrise';
+    renderGallery(isDay ? dayImagesByDate : nightImagesByDate, isDay);
 }
 
 // Event listeners for mode toggle
