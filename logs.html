@@ -45,44 +45,6 @@
       added here over time.
     </p>
 
-    <h3>[whimsical spaces in topolog(y)]</h3>
-
-    <p style="color: rgb(111, 111, 111); font-style: italic;">Feb 6th, 2024 <span style="float: right;">maxime</span></p>
-
-    <p>Today, in my topology tute and then again at orchard and then again while trying to sleep I got nerdsniped by the following topology problem, motivated by problem sheet 1 question 10. I have finally resolved it.</p>
-
-    <p>Sheet 1 q10 asks for a proof that, if \(X\) is Hausdorff and \(f: X \to X\) is continuous, then \(\mathrm{fix}(f) = \{x : f(x) = x\}\) is closed in \(X\).</p>
-
-    <p>In my tutorial on the sheet today, we spent an hour trying to work out whether a converse is true: let's call a topological space Whimsical if, for every continuous \(f: X \to X\), \(\mathrm{fix}(f)\) is closed. Are all whimsical spaces Hausdorff?</p>
-
-    <h4>A few simple preliminary observations:</h4>
-    <ul>
-        <li>Given any topological space \(X\), and any point \(y\) in \(X\), the constant map \(f: x \mapsto y\) is continuous, and \(\mathrm{fix}(f) = \{y\}\). So all singletons in a whimsical space are closed (i.e., whimsical spaces are T1).</li>
-        <li>All finite whimsical spaces are Hausdorff (because finite T1 spaces are Hausdorff).</li>
-    </ul>
-
-    <p>Hence, the most obvious thing to think about next is examples of T1-but-not-Hausdorff spaces. There are two well-known examples: the line with two origins, and any infinite set \(X\) with the cofinite topology.</p>
-
-    <p>The line with two origins admits an obvious candidate for a troublesome continuous map: let \(f\) be the identity on all points except for one of the origins, which \(f\) maps to the other origin. Then this is continuous, but \(\mathrm{fix}(f)\) is all but one point, and certainly not a closed set. Hence the line with two origins is not whimsical.</p>
-
-    <p>Any bijection \(f: X \to X\), if \(X\) has the cofinite topology, is continuous. So it is also easy to see that cofinite spaces are not whimsical: take \(f\) to fix all but two points, which are swapped. Then \(\mathrm{fix}(f)\) is neither \(X\) nor finite, and thus not closed.</p>
-
-    <p>Since these are the two canonical examples of T1-but-not-Hausdorff spaces, and we have shown that Whimsy is strictly stronger than T1, at this point the conjecture felt fairly well-motivated. I spent a fruitless hour at orchard trying to prove it.</p>
-
-    <p>By this point, my mental reserve of T1-but-not-Hausdorff spaces had run out, so I consulted pi-base, which gave me a couple more to think about. The first of these was \(\mathbb{R}\) with the cocompact topology - sets under this topology are open if their complement, when given the usual topology on \(\mathbb{R}\), is compact. This fails to be whimsical because of the following function: let \(f\) be the identity on the negative reals, and \(f(x) = 2x\) on the nonnegative reals. Then \(\mathrm{fix}(f) = (-\infty, 0]\) is not closed in the cocompact topology.</p>
-
-    <p>Pi-base's second interesting example is the one-point compactification of \(\mathbb{Q}\). One of my friends claims to have a proof that the one-point compactification of \(\mathbb{Q}\) is whimsical; and pi-base informs me that this space is not Hausdorff - so this would conclude matters, except for one crucial detail: I am lazy, and the one-point compactification of \(\mathbb{Q}\) is an absolutely horrid space to work with, so I have made no attempt to digest, nor to check various details of, my friend's proof (maybe tomorrow when I am less sleepy).</p>
-
-    <p>While trying to fall asleep, and gaining a headache in the process, I have finally resolved the question. Whimsical spaces need not be Hausdorff. Here is my construction. I don't know what motivated me to consider this example - I don't think it is in pi-base, and I have no moral account of why one might expect it to work. It just does.</p>
-
-    <p>Let \(X\) be the reals, with their usual topology, except for one detail - I require that all neighbourhoods of \(0\) in \(X\) be cofinite. This is certainly T1, as \(\{0\}\) is closed and \(X\) behaves like a Hausdorff space everywhere else. It is not Hausdorff, however, since any neighbourhood of \(1\) must be infinite, and therefore intersects with every neighbourhood of \(0\). But it is not whimsical: suppose \(f: X \to X\) is continuous.</p>
-
-    <h4>Case 1: \(f(0) \neq 0\)</h4>
-    <p>Let \(I\) be an interval containing \(f(0)\) and not containing \(0\). The preimage of \(I\) must be cofinite, and therefore by continuity must be all of \(X\). Since \(I\) was arbitrarily small, \(f\) must be a constant function, and hence \(\mathrm{fix}(f)\) is a singleton, and therefore closed.</p>
-
-    <h4>Case 2: \(f(0) = 0\)</h4>
-    <p>Then \(\mathrm{fix}(f)\) is closed if and only if \(\mathrm{fix}(f) \setminus \{0\}\) is closed as a subset of \(\mathbb{R} \setminus \{0\}\). Morally, this is true because \(\mathbb{R} \setminus \{0\}\) is Hausdorff. This is fiddlier to prove than it seemed at first sight, because \(f\) restricted to \(Y = \mathbb{R} \setminus \{0\}\) is not a function \(Y \to Y\), but it can nonetheless be proven by the same argument as in the proof of exercise 10. So \(X\) is in fact whimsical.</p>
-
     <h3>[first log]</h3>
 
     <p style="color: rgb(111, 111, 111); font-style: italic;">Feb 4th, 2024 <span style="float: right;"><a href="https://agniv.me/">agniv sarkar</a></span></p>
