@@ -188,3 +188,8 @@ iframe {
     margin: 0 auto;
   }
 }
+
+.quote {
+  font-style: italic;
+  text-align: center;
+}
