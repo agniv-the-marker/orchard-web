@@ -1,5 +1,17 @@
 # orchard website
 
+## new pictures
+
+To upload new images, put them into `static/jpg/nighttime` and `static/jpg/daytime`, and then run `image_converter.py` to get webps in the correct folders.
+
+then run `image_sorter.py` to get an `images.js` file (this doesn't overwrite the first one). then just swap the two out, make sure it works well.
+
+## for new logs
+
+if its a google document, export it as an HTML file to get all the images. then it's just a matter of using the appropriate tags.
+
+## new pages
+
 Roughly, to make a new page, just do an html file and go:
 
 ```html
