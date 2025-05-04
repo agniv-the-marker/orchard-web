@@ -61,16 +61,40 @@
 
     <h2>[ensemble]</h2>
 
-    <p>on march 9th in London, hundreds of people from many places, from many disciplines, will come together, united by a love for making. it'll be a demo day, conference, live performance, art exhibit all in one afternoon. and yes, we'll have lunch and snacks too.</p>
+    <p>[ensemble] is a huge gathering with oxford, london, cambridge, warwick, liverpool, & even more versions of [orchard] for a demo day, conference, live performance, art exhibit, and even more all in one afternoon.</p>
+  
+    <p>
+      so far, it's happened three times, most recently march 9th 2025 at  <a href="https://newspeak.house/">newspeak.house</a>. some photos from past ensembles:
+    </p>
 
-      <!-- <p>we'll kick off with some food and some conversation, before getting all cosy for the demos section. it will be similar to the ones at the end of [orchard], but longer, deeper, more explanatory.</p>
-      
-      <p>afterwards, we do something called an unconference. it's like a conference, but you get to decide what events happen! we put up a board where people write down activities, sessions, workshops, or presentations they'd like to host. and then we spend a couple hours actually doing those events.</p>
-      
-      <p>and then that's it! some people will go home, some people will go to dinner, but everybody will leave feeling inspired as ever.</p>
+    <div class="photo-carousel">
+      <button class="carousel-button prev" onclick="prevPhoto()">←</button>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <img src="./static/ensemble.webp" class="carousel-photo" />
+          <img src="./static/newspeak_ensemble_photos/491462387_17946686387971250_7404984723941807369_n.jpg" class="carousel-photo" />
+          <img src="./static/ensemble-2.webp" class="carousel-photo" />
+          <img src="./static/newspeak_ensemble_photos/491463573_17946686342971250_5410112273468840390_n.jpg" class="carousel-photo" />
+          <img src="./static/ensemble-3.webp" class="carousel-photo" />
+        </div>
+      </div>
+      <button class="carousel-button next" onclick="nextPhoto()">→</button>
+    </div>
 
+    <p>why should you go? here's what people have said:</p>
       
-       -->
+      <p class="quote"><i>"To have a blast! See cool projects, meet great people"
+      <br>"love [orchard], simple as"
+      <br>"I missed out on going last time and I heard it was really fun."</i></p>
+
+    <p>
+      more information on [ensemble] and future events can be found at <a href="https://www.ensemble.rodeo/">ensemble.rodeo</a>. if you want to support [ensemble], please reach out to 
+    </p>
+
+    <!--
+      https://www.ensemble.rodeo/
+      
+      on march 9th in London, hundreds of people from many places, from many disciplines, will come together, united by a love for making. it'll be a demo day, conference, live performance, art exhibit all in one afternoon. and yes, we'll have lunch and snacks too.</p>
 
       <p>[ensemble] is a huge gathering with [orchard] and london, cambridge, warwick, & liverpool's versions of [orchard], but it's open to those who have not attended a session too!</p>
 
@@ -82,12 +106,7 @@
       
       <p>​<a href="https://lu.ma/event/evt-9SVPBPCIcoK5pIK" data-luma-action="checkout" data-luma-event-id="evt-9SVPBPCIcoK5pIK">sign up now!!!</a> <i>space is limited.</i> and here are some photos from last time!</p>
 
-
-    <img src="./static/ensemble.webp" id="photo" style="box-shadow: 0 0 50px rgb(65, 2, 2);" />
-    <img src="./static/ensemble-2.webp" id="photo" style="box-shadow: 0 0 50px rgb(65, 2, 2);" />
-    <img src="./static/ensemble-3.webp" id="photo" style="box-shadow: 0 0 50px rgb(65, 2, 2);" />
-
-    
+      -->
 
 
     <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
@@ -124,6 +143,63 @@
     initCursorChat("orchard-room")
   </script>
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/cursor-chat/dist/style.css" />
+
+  <script>
+    let currentIndex = 0;
+    const track = document.querySelector('.carousel-track');
+    const photos = document.querySelectorAll('.carousel-photo');
+    const totalPhotos = photos.length;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextPhoto() {
+      currentIndex = (currentIndex + 1) % totalPhotos;
+      updateCarousel();
+    }
+
+    function prevPhoto() {
+      currentIndex = (currentIndex - 1 + totalPhotos) % totalPhotos;
+      updateCarousel();
+    }
+
+    // Touch/Swipe handling
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const container = document.querySelector('.carousel-container');
+
+    container.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    container.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          nextPhoto();
+        } else {
+          prevPhoto();
+        }
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') {
+        prevPhoto();
+      } else if (e.key === 'ArrowRight') {
+        nextPhoto();
+      }
+    });
+  </script>
 </body>
 
 </html>
