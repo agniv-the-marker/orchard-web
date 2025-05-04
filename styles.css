@@ -2,6 +2,7 @@
   --gray: #6C6C6C;
   --white: rgb(250, 250, 250);
   --orange: #f08f27;
+  --red: #c17575;
   --brown: #f5deb3;
   --black: rgb(16, 16, 16);
 
@@ -102,6 +103,11 @@ body {
 
 .orchard {
   color: var(--orange);
+  font-weight: bolder;
+}
+
+.ensemble {
+  color: var(--red);
   font-weight: bolder;
 }
 
